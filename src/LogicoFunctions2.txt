@@ -1,0 +1,26 @@
+def convert_str_to_list(str):
+def convert_list_to_str(list):
+def remove(baseStr,rmStr):
+def sublist(sublist,superlist):
+def extend(list1,list2):
+    def __init__(self,sub,pred,lettype,tVal):
+    def __str__(self):
+    def getEngName(self):
+    def getQuantity(self):
+    def getQuality(self):
+    def getTermsDist(self):
+    def chgQuantity(self):
+    def chgQuality(self):
+    def contrary(self):
+    def subalt(self):
+    def subcontrary(self):
+    def contradictory(self):
+    def convert(self):
+    def obvert(self):
+    def contrapose(self):
+    def __init__(self, majorPrem, minorPrem, conclus):
+    def __str__(self):
+    def getMood(self):
+    def getMiddleTerm(self):
+    def getFig(self):
+    def isValid(self):

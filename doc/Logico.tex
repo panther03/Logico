@@ -1,0 +1,221 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+
+% This is a simple template for a LaTeX document using the "article" class.
+% See "book", "report", "letter" for other types of document.
+
+\documentclass[8pt]{extarticle} % use larger type; default would be 10pt
+
+\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+
+%%% Examples of Article customizations
+% These packages are optional, depending whether you want the features they provide.
+% See the LaTeX Companion or other references for full information.
+
+%%% PAGE DIMENSIONS
+\usepackage{geometry} % to change the page dimensions
+\geometry{a4paper} % or letterpaper (US) or a5paper or....
+\geometry{margin=0.5in} % for example, change the margins to 2 inches all round
+% \geometry{landscape} % set up the page for landscape
+%   read geometry.pdf for detailed page layout information
+
+\usepackage{graphicx} % support the \includegraphics command and options
+
+\usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
+
+%%% PACKAGES
+\usepackage{booktabs} % for much better looking tables
+\usepackage{array} % for better arrays (eg matrices) in maths
+\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
+\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+\usepackage{verbatim}
+\usepackage{hyperref}
+% These packages are all incorporated in the memoir class to one degree or another...
+
+%%% HEADERS & FOOTERS
+\usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
+\pagestyle{fancy} % options: empty , plain , fancy
+\renewcommand{\headrulewidth}{1.5pt} % customise the layout...
+\renewcommand{\footrulewidth}{1.5pt} % customise the layout...
+\lhead{Logico tne Python Logic Interpereter}\chead{About}\rhead{Phil 201}
+\lfoot{}\cfoot{\thepage}\rfoot{}
+
+%%% ToC (table of contents) APPEARANCE
+\usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
+\usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
+\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
+\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
+
+%%% END Article customizations
+
+%%% The "real" document content comes below...
+
+\setlength{\parindent}{0cm}
+
+\begin{document}
+ 
+\section{What is Logico?}
+
+Logico is a Python implementation of the robot named Logico that interperets categorical propositions      and categorical syllogisms. This is exactly what the Python implementation does.
+
+\section{Simple Stuff and Limitations}
+-
+However, the Python implementation cannot describe truth. For example, it cannot tell you whether or not all cats are dogs; you must tell it that. In a sense, it is not telling you whether 3 is a square root, but telling you what 2+3 is instead. So the Logico Python implementation can tell validity, but not truth. It can tell when a syllogism is invalid.
+
+Here is the method you would take to make a proposition in general:
+
+\begin{verbatim}
+>>> A=Propos(subject,predicate,lettertype,truth_value)
+\end{verbatim}
+
+For instance,
+
+\begin{verbatim}
+>>> A=Propos("subject","dogs","A",True)
+\end{verbatim}
+
+The quotation marks {\bf{are needed}}. And a syllogism can be completed using this command (again, in general):
+
+\begin{verbatim}
+>>> S=Syllog(A,B,C)
+\end{verbatim}  
+
+where A, B, and C are already-defined propositions.
+
+There are many operations you can peform from here, but most of them have this general syntax.
+
+\begin{verbatim}
+A.propos_method()
+\end{verbatim}
+where A is an already-defined propositon. Notice the ()'s. Likewise, a syllogism method can be called like so:
+
+\begin{verbatim}
+S.syllog_method()
+\end{verbatim}
+
+where S is an already-defined syllogism.
+
+To find the list of all of the operations, type \verb|help(Propos)| for the propositions and \verb|help(Syllog)| for the syllogisms.
+
+\section{Help Text}
+
+\begin{verbatim}
+Help on class Propos in module __main__:
+
+class Propos(builtins.object)
+ |  Class for a categorical proposition from the Aristotelian standpoint.
+ |
+ |  Methods defined here:
+ |
+ |  __init__(self, sub, pred, lettype, tVal)
+ |      __init__(str,str,str,bool) -> Propos
+ |      Propositon constructor. Takes the subject, predicate, categorical proposition type,
+ |	 and truth value.
+ |
+ |  __str__(self)
+ |      Propos.__str__() -> str
+ |      Class printer. Will put "F" in front of the proposition if it is false.
+ |
+ |  chgQuality(self)
+ |      Propos.chgQuality() -> None
+ |      Changes the quality of the proposition.
+ |
+ |  chgQuantity(self)
+ |      Propos.chgQuantity() -> None
+ |      Changes the quantifier of the proposition.
+ |
+ |  contradictory(self)
+ |      Propos.chgQuality() -> None
+ |      Performs contradiction on the propositon.
+ |
+ |  contrapose(self)
+ |      Propos.contrapose() -> None
+ |      Performs contradiction on the propositon.
+ |      If proposition does not satisfy the conditions, returns "Illicit contraposition."
+ |
+ |  contrary(self)
+ |      Propos.contrary() -> None
+ |      Performs Aristotelian contrary on the propositon.
+ |      If proposition does not satisfy the conditions, returns "Illicit contrary."
+ |
+ |  convert(self)
+ |      Propos.convert() -> None
+ |      Performs conversion on the propositon.
+ |      If proposition does not satisfy the conditions, returns "Illicit conversion."
+ |
+ |  getEngName(self)
+ |      Propos.getEngName() -> str
+ |      Same as __str__, but ignores truth.
+ |
+ |  getQuality(self)
+ |      Propos.getQuality() -> str
+ |      Prints quality of proposition.
+ |
+ |  getQuantity(self)
+ |      Propos.getQuantity() -> str
+ |      Prints quantity of proposition.
+ |
+ |  getTermsDist(self)
+ |      Propos.getTermsDist() -> list
+ |      Lists the terms distributed by the propositon.
+ |
+ |  obvert(self)
+ |      Propos.obvert() -> None
+ |      Performs obversion on the propositon.
+ |
+ |  subalt(self)
+ |      Propos.subalt() -> None
+ |      Performs Aristotelian subalternation on the propositon.
+ |      If proposition does not satisfy the conditions, returns "Illicit subalternation."
+ |
+ |  subcontrary(self)
+ |      Propos.subcontrary() -> None
+ |      Performs Aristotelian subcontrary on the propositon.
+ |      If proposition does not satisfy the conditions, returns "Illicit subcontrary."
+ |
+ |  ----------------------------------------------------------------------
+\end{verbatim}
+
+\begin{verbatim}
+Help on class Syllog in module __main__:
+
+class Syllog(builtins.object)
+ |  A class for a categorical syllogism.
+ |  
+ |  Methods defined here:
+ |  
+ |  __init__(self, majorPrem, minorPrem, conclus)
+ |      __init__(Propos,Propos,Propos) -> Syllog
+ |      Class constructor. Takes three propositions as input.
+ |  
+ |  __str__(self)
+ |      Propos.__str__() -> str
+ |      Class printer. Bar adjusts itself to length of the longest
+ |      propositions. Also ignores putting F for false propositions.
+ |  
+ |  getFig(self)
+ |      Propos.getFig() -> int
+ |      Gives the figure of the syllogism as an Int.
+ |  
+ |  getMiddleTerm(self)
+ |      Propos.getMiddleTerm() -> str
+ |      Gives the middle term of the syllogism.
+ |  
+ |  getMood(self)
+ |      Propos.getMood() -> str
+ |      Gives the mood of the syllogism.
+ |  
+ |  isValid(self)
+ |      Propos.getFig() -> bool
+ |      Tests for validity. IT DOES NOT TEST FOR SOUNDNESS.
+ |  
+ |  ----------------------------------------------------------------------
+\end{verbatim}
+
+
+\section{Downloading Python for your Computer}
+
+Please visit \url{https://www.python.org/downloads/}. Then click "Download Python 3.4.1."
+
+\end{document}
